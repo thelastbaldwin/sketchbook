@@ -1,0 +1,54 @@
+{
+    "name":"2012.10.22 @ 10am",
+    "publish_date" : 1350925200,
+    "users":{
+        "Brian Coppola" :{
+            "item_total": 101,
+            "item_complete": 50
+        },
+        "Steve Minor" : {
+            "item_total": 58,
+            "item_complete": 21
+        },
+        "Andreas Nelson" : {
+            "item_total": 531,
+            "item_complete": 50
+        },
+        "Brian Duimstra" : {
+            "item_total": 1013,
+            "item_complete": 800
+        },
+        "David Faragalli" : {
+            "item_total": 101,
+            "item_complete": 50
+        },
+        "Jacob Hargrave" : {
+            "item_total": 70,
+            "item_complete": 50
+        },
+        "Katherine Turner" : {
+            "item_total": 10,
+            "item_complete": 1
+        },
+        "Mark Schindler" : {
+            "item_total": 10,
+            "item_complete": 4
+        },
+        "Morgan Nomura" : {
+            "item_total": 10,
+            "item_complete": 1
+        },
+        "Suzanne Duket" : {
+            "item_total": 10,
+            "item_complete": 1
+        },
+        "Tim Kha" : {
+            "item_total": 10,
+            "item_complete": 4
+        },
+        "Johnny Rotten" : {
+            "item_total": 10,
+            "item_complete": 1
+        }
+    }
+}
