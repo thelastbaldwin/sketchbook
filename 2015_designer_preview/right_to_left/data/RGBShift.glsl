@@ -7,6 +7,7 @@ precision mediump int;
 
 
 uniform sampler2D texture;
+
 uniform float angle;
 uniform float amount;
 varying vec4 vertColor;
@@ -18,5 +19,5 @@ void main(){
 	vec4 cr = texture2D(texture, vertTexCoord.xy + offset);
 	vec4 cga = texture2D(texture, vertTexCoord.xy);
 	vec4 cb = texture2D(texture, vertTexCoord.xy - offset);
-	gl_FragColor = vec4(cr.r, cga.g, cb.b, cga.a) * vec4(vertColor.xyz, 0.5);
+	gl_FragColor = vec4(cr.r, cga.g, cb.b, cga.a) * vertColor;
 }

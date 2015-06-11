@@ -27,8 +27,9 @@ void setup(){
 }
 
 void draw(){
-  fill(0, 15);
-  rect(0, 0, width, height);
+//  fill(255, 150);
+//  rect(0, 0, width, height);
+background(0);
   
   for(Particle p: particles){
     p.update();
