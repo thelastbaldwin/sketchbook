@@ -7,7 +7,7 @@ float duration = 200;
 color f;
 
 void setup(){
-  size(800, 800, OPENGL);
+  size(1200, 400, OPENGL);
   change = width * 1.5;
   f = getRandomColor();
   background(0);
@@ -15,7 +15,7 @@ void setup(){
 
 void draw(){
   noStroke();
-  fill(0, 20);
+  fill(0, 10);
   rect(0, 0, width, height);
   
   stroke(f);

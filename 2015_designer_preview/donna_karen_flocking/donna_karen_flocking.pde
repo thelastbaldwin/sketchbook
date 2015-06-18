@@ -10,13 +10,13 @@ PShader dotMatrixShader;
 PShader blurShader;
 PShader linearBlend;
 
-PImage canvas;
+PImage texture;
 
 float spacing = 12.0;
 float size = 6.0;
-float blur = 60.0;
+float blur = 40.0;
 float h = 0;
-float mix = 0.5;
+float mix = 0.8;
 
 void setup() {
   size(1200, 400, OPENGL);
@@ -26,13 +26,13 @@ void setup() {
     flock.addBoid(new Boid(width/2,height/2));
   }
   
-  canvas = loadImage("canvas.jpg");
+  texture = loadImage("texture.jpg");
   
   blurShader = loadShader("blur.glsl"); 
   dotMatrixShader = loadShader("dot_matrix.glsl");
   dotMatrixShader.set("resolution", float(width), float(height));
   linearBlend = loadShader("linearBlend.glsl");
-  linearBlend.set("tex2", canvas);
+  linearBlend.set("tex2", texture);
   
   cp5 = new ControlP5(this);
   Group controls = cp5.addGroup("controls").setPosition(10, 10).setWidth(260).setBackgroundColor(color(0, 200)).setBackgroundHeight(100).activateEvent(true).setLabel("controls");

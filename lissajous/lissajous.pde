@@ -2,18 +2,19 @@ import controlP5.*;
 ControlP5 cp5;
 
 int pointCount = 3200;
-int freqX = 93;
-int freqY = 98;
-int freqZ = 95;
+int freqX = 52;
+int freqY = 55;
+int freqZ = 54;
 float phi = 0; // radial offset
 float angle = 0.5;
-float amplitude = 600;
+float amplitude = 1200;
 
 
 PVector[] points = new PVector[0];
 
 void setup(){
-  size(600, 600, OPENGL);
+  size(1200, 400, OPENGL);
+  amplitude = width;
   noFill();
   stroke(255);
   

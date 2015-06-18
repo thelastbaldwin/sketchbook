@@ -10,7 +10,7 @@ Particle particles[] = new Particle[MAX_PARTICLES];
 void setup(){
   size(1200, 400, OPENGL);
   stroke(50, 0, 255);
-//  strokeWeight(10);
+  strokeWeight(10);
   
   for(int i = 0; i < MAX_PARTICLES; i++){
     particles[i] = new Particle(random(width), random(height), random(0.1, 1.0), i);
@@ -19,7 +19,7 @@ void setup(){
   background(0);
   
   maskShader = loadShader("mask.glsl");
-  maskImage = createGraphics(displayWidth, displayHeight, OPENGL);
+  maskImage = createGraphics(width, height, OPENGL);
   
   maskShader.set("mask", maskImage);
   
@@ -29,17 +29,15 @@ void setup(){
 
 void draw(){
   maskImage.beginDraw();
-  maskImage.image(movie, 0, 0, 1920, 1080);
+  maskImage.image(movie, 0, 0, width, height);
   maskImage.endDraw();
   
   noFill();
-  strokeWeight(10);
   for(Particle p: particles){
     p.update();
     p.display();
   } 
 
-//  drawOutput(0, 0, width, height);
   filter(maskShader);
 }
 
