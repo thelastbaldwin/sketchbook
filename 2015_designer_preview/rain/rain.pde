@@ -100,7 +100,7 @@ void draw(){
   amount = 0.001 + sin(millis() * .001) * 0.005;
   RGBShader.set("angle", angle);
   RGBShader.set("amount", amount);
-  filter(RGBShader);
+  //filter(RGBShader);
 }
 
 class Ring{
