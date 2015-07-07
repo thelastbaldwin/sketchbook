@@ -5,10 +5,12 @@ float[][] points = new float[POINT_COUNT][2];
 float[][] originalPoints = new float[POINT_COUNT][2];
 float offset = 50.0;
 
+boolean capture = false;
+
 Delaunay myDelaunay;
 
 void setup(){
-  size(1200, 400, OPENGL);
+  size(4320, 1080, OPENGL);
   
   for(int i = 0; i < POINT_COUNT; i++){
 //    float x = random(0, width
@@ -21,6 +23,7 @@ void setup(){
  
    myDelaunay = new Delaunay(points);
    println(myDelaunay.getEdges().length);
+   frameRate(30);
 }
 
 void draw(){
@@ -46,6 +49,13 @@ for(int i = 0; i < POINT_COUNT; i++){
     float endX = myEdges[i][2];
     float endY = myEdges[i][3];
     line(startX, startY, endX, endY);
+   }
+   
+   if(capture){
+      saveFrame("/Volumes/HD_2/Designer_Preview/4320x1080/delaunay/####.tif");
+     if(frameCount >= 30 * 60 * 5){
+       exit();
+     }
    }
  
 

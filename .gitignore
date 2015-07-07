@@ -5,3 +5,5 @@ libraries/
 **/*.mov
 **/*.jpg
 **/*.jpeg
+**/*.gif
+application.*

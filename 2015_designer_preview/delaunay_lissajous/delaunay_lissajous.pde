@@ -2,11 +2,12 @@ int POINT_COUNT = 200;
 float[][] points = new float[POINT_COUNT][2];
 float[][] originalPoints = new float[POINT_COUNT][2];
 float offset = 10.0;
-float threshold = 400.0;
+float threshold = 1200.0;
 
+boolean capture = true;
 
 void setup(){
-  size(1200, 400, OPENGL);
+  size(4320, 1080, OPENGL);
   
   for(int i = 0; i < POINT_COUNT; i++){
     points[i][0] = random(-100, width + 100);
@@ -17,6 +18,7 @@ void setup(){
   }
 
    strokeWeight(2);
+   frameRate(30);
 }
 
 void draw(){
@@ -37,6 +39,13 @@ for(int i = 0; i < POINT_COUNT; i++){
          stroke(255, a);
          line(points[i][0], points[i][1], points[j][0], points[j][1]);
        }
+     }
+   }
+   
+   if(capture){
+      saveFrame("/Volumes/HD_2/Designer_Preview/4320x1080/delaunay_lissajous/####.tif");
+     if(frameCount >= 30 * 60 * 5){
+       exit();
      }
    }
 }

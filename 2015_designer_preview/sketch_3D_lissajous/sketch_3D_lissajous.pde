@@ -1,24 +1,27 @@
 int POINT_COUNT = 200;
 float[][] points = new float[POINT_COUNT][3];
 float offset = 30.0;
-float threshold = 400.0;
+float threshold = 1200.0;
 float depth = 1200.0;
+boolean capture = true;
+
 
 
 void setup(){
-  size(1920, 640, OPENGL);
+  size(3240, 1080, OPENGL);
   
   points = generateRandomPoints();
   strokeWeight(2);
+  frameRate(30);
 }
 
 void draw(){
   background(0); 
   
-  float t = millis() * .0001;
-  threshold = 200 + 100 * noise(t * 10);
-  camera(width/2.0 + sin(t) * width/2.0, height/2 + sin(t) * height/2,depth/2.0 + cos(t) * depth/2.0, // eyeX, eyeY, eyeZ
-        width/2.0, height/2.0, depth/2.0, // centerX, centerY, centerZ
+  float t = millis() * .00005;
+  threshold = 400 +  200 * noise(t * 10);
+  camera(sin(t) * width/2.0, sin(t) * height/2,cos(t) * depth/2.0, // eyeX, eyeY, eyeZ
+        0, 0, 0, // centerX, centerY, centerZ
         0, 1, 0); // upX, upY, upZ
 
    for(int i = 0; i < points.length; i++){
@@ -32,15 +35,23 @@ void draw(){
        }
      }
    }
+   
+   if(capture){
+      saveFrame("/Volumes/HD_2/Designer_Preview/4320x1080/3d_lissajous/####.tif");
+     if(frameCount >= 30 * 60 * 5){
+       exit();
+     }
+   }
+  
 }
 
 
 float[][] generateRandomPoints(){
   float[][] points = new float[POINT_COUNT][3];
   for(int i = 0; i < POINT_COUNT; i++){
-    points[i][0] = random(width);
-    points[i][1] = random(height);
-    points[i][2] = random(depth);
+    points[i][0] = random(-width/2, width/2);
+    points[i][1] = random(-height/2, height/2);
+    points[i][2] = random(-depth/2, depth/2);
   }
   return points;
 }

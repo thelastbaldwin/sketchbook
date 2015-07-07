@@ -7,11 +7,13 @@ Ring testRing;
 int MAX_RINGS = 100;
 ArrayList<Ring> rings;
 
+boolean capture = true;
+
 float angle = 0;
 float amount = 0.005;
 
 void setup(){
-  size(1200, 400, OPENGL);
+  size(4320, 1080, OPENGL);
   noFill();
   
   rings = new ArrayList<Ring>();
@@ -26,6 +28,8 @@ void setup(){
 //  Group controls = cp5.addGroup("controls").setPosition(10, 10).setWidth(260).setBackgroundColor(color(0, 200)).setBackgroundHeight(60).activateEvent(true).setLabel("controls");
 //  cp5.addSlider("angle").setMin(0.0).setMax(TWO_PI).setValue(angle).setPosition(10, 20).setSize(180, 9).setGroup(controls);
 //  cp5.addSlider("amount").setMin(0.0001).setMax(0.5).setValue(amount).setPosition(10, 40).setSize(180, 9).setGroup(controls);
+
+
 }
 
 void update(){  
@@ -101,6 +105,13 @@ void draw(){
   RGBShader.set("angle", angle);
   RGBShader.set("amount", amount);
   //filter(RGBShader);
+  
+  if(capture){
+      saveFrame("/Volumes/HD_2/Designer_Preview/4320x1080/rain/####.tif");
+     if(frameCount >= 30 * 60 * 5){
+       exit();
+     }
+   }
 }
 
 class Ring{

@@ -9,10 +9,13 @@ float threshold = 800.0;
 float depth = 1200.0;
 
 int time = 0;
-float duration = 400;
+float duration = 800;
+
+
+boolean capture = true;
 
 void setup(){
-  size(1200, 400, OPENGL);
+  size(4320, 1080, OPENGL);
   
   position = generateRandomPoints(POINT_COUNT);
   current = new float[POINT_COUNT][3];
@@ -24,14 +27,15 @@ void setup(){
   
   target = generateRandomPoints(POINT_COUNT);
   
-  strokeWeight(2);
+  strokeWeight(4);
+  frameRate(30);
 }
 
 void draw(){
   background(0); 
   
-  float t = millis() * .0002;
-  threshold = 600 + (sin(t) * 400) * noise(t * 10);
+  float t = millis() * .00005;
+  threshold = 1200 + (sin(t) * 800) * noise(t * 10);
   camera( sin(t) * width, sin(t) * height, cos(t) * depth, // eyeX, eyeY, eyeZ
         0, 0, 0, // centerX, centerY, centerZ
         0, 1, 0); // upX, upY, upZ
@@ -68,6 +72,13 @@ void draw(){
      }
      target=generateRandomPoints(POINT_COUNT);
      time = 0;
+   }
+   
+    if(capture){
+      saveFrame("/Volumes/HD_2/Designer_Preview/4320x1080/shifting_3d_lissajous_thick/####.tif");
+     if(frameCount >= 30 * 60 * 5){
+       exit();
+     }
    }
 }
 
